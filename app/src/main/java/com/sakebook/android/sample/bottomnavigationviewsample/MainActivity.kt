@@ -3,6 +3,8 @@ package com.sakebook.android.sample.bottomnavigationviewsample
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.support.v4.app.Fragment
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,22 +22,30 @@ class MainActivity : AppCompatActivity() {
             MainFragment.newInstance(i)
         }
 
-        supportFragmentManager.beginTransaction().replace(R.id.layout_container, fragments[0]).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.layout_container, fragments[0], "0").commit()
         bottomNavigation.setOnNavigationItemSelectedListener {
-            return@setOnNavigationItemSelectedListener when(it.itemId) {
+            when(it.itemId) {
                 R.id.navigation_recents -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.layout_container, fragments[0]).commit()
-                    true
+                    updateBottomNavigation(fragments, 0, "0")
                 }
                 R.id.navigation_favorites -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.layout_container, fragments[1]).commit()
-                    true
+                    updateBottomNavigation(fragments, 1, "1")
                 }
                 R.id.navigation_nearby -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.layout_container, fragments[2]).commit()
-                    true
+                    updateBottomNavigation(fragments, 2, "2")
                 }
-                else -> false
+                else -> return@setOnNavigationItemSelectedListener false
+            }
+            true
+        }
+    }
+
+    private fun updateBottomNavigation(fragments: List<Fragment>, potision: Int, tag: String) {
+        val fragment = supportFragmentManager.findFragmentByTag(tag)
+        when(fragment) {
+            null -> supportFragmentManager.beginTransaction().replace(R.id.layout_container, fragments[potision], tag).commit()
+            else -> {
+                (fragment as MainFragment).smoothScrollToTop()
             }
         }
     }

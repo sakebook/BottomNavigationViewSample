@@ -3,6 +3,7 @@ package com.sakebook.android.sample.bottomnavigationviewsample
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -30,6 +31,8 @@ class MainFragment: Fragment() {
         }
     }
 
+    private var recyclerView: RecyclerView? = null
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
     }
@@ -44,17 +47,21 @@ class MainFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val recyclerView = view.findViewById(R.id.recycler_view) as RecyclerView
+        recyclerView = view.findViewById(R.id.recycler_view) as RecyclerView
         val items = (0..100).map { "item: $it" }
         val args = arguments
         val seedId = args.getInt(ARG_KEY_SEED)
-        recyclerView.layoutManager = when(seedId) {
+        recyclerView?.layoutManager = when(seedId) {
             1 -> GridLayoutManager(context, 3)
             2 -> StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             else -> LinearLayoutManager(context)
         }
-        recyclerView.adapter = MainAdapter(context, items)
+        recyclerView?.adapter = MainAdapter(context, items)
+        recyclerView?.scrollToPosition(0)
+    }
 
+    fun smoothScrollToTop() {
+        recyclerView?.scrollToPosition(0)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -74,6 +81,8 @@ class MainFragment: Fragment() {
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
             holder as ViewHolder
             holder.textView.text = items[position]
+            val bgColor = if (position % 2 == 0) R.color.white else R.color.gray
+            holder.itemView.setBackgroundColor(ContextCompat.getColor(context, bgColor))
         }
 
         override fun getItemCount(): Int {
