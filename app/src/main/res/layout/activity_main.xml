@@ -12,11 +12,12 @@
         android:fitsSystemWindows="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
+        
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
+            android:paddingTop="@dimen/status_bar_height"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/padding_tool_bar_height"
             android:minHeight="?attr/actionBarSize"
             android:background="@color/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
