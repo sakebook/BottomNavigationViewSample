@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
+import android.os.Build
+import android.view.View
 
 
 class MainActivity : AppCompatActivity() {
@@ -12,6 +14,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            findViewById(android.R.id.content).systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+        }
         setContentView(R.layout.activity_main)
         initBottomNavigation()
     }
@@ -21,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         val fragments = (0 until tabCount).mapIndexed { i, value ->
             MainFragment.newInstance(i)
         }
-
         supportFragmentManager.beginTransaction().replace(R.id.layout_container, fragments[0], "0").commit()
         bottomNavigation.setOnNavigationItemSelectedListener {
             when(it.itemId) {

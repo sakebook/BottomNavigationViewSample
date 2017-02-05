@@ -57,11 +57,10 @@ class MainFragment: Fragment() {
             else -> LinearLayoutManager(context)
         }
         recyclerView?.adapter = MainAdapter(context, items)
-        recyclerView?.scrollToPosition(0)
     }
 
     fun smoothScrollToTop() {
-        recyclerView?.scrollToPosition(0)
+        recyclerView?.smoothScrollToPosition(0)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
