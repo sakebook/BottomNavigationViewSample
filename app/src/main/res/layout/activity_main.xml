@@ -17,7 +17,7 @@
             android:id="@+id/toolbar"
             android:paddingTop="@dimen/status_bar_height"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/padding_tool_bar_height"
+            android:layout_height="@dimen/tool_bar_height"
             android:minHeight="?attr/actionBarSize"
             android:background="@color/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
@@ -35,12 +35,13 @@
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_gravity="bottom"
+        android:paddingBottom="@dimen/navigation_bar_padding"
+        android:background="@color/colorAccent"
         app:layout_behavior="com.sakebook.android.sample.bottomnavigationviewsample.BottomNavigationBehavior"
-        android:background="@color/white"
         app:elevation="@dimen/small_margin"
         app:menu="@menu/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="@dimen/bottom_navigation_height"/>
 
 </android.support.design.widget.CoordinatorLayout>
 

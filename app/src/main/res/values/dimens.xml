@@ -2,5 +2,7 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="small_margin">8dp</dimen>
     <dimen name="status_bar_height">24dp</dimen>
-    <dimen name="padding_tool_bar_height">80dp</dimen><!-- status bar(24dp) + tool bar(56dp) -->
+    <dimen name="tool_bar_height">80dp</dimen><!-- status bar(24dp) + tool bar(56dp) -->
+    <dimen name="navigation_bar_padding">46dp</dimen><!-- navigation bar(46dp) -->
+    <dimen name="bottom_navigation_height">104dp</dimen><!-- navigation bar(46dp) + bottom navigation(58dp) -->
 </resources>
