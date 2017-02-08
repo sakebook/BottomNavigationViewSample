@@ -1,14 +1,12 @@
 package com.sakebook.android.sample.bottomnavigationviewsample
 
 import android.content.Context
-import android.support.v4.content.ContextCompat
+import android.support.design.widget.Snackbar
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import com.bumptech.glide.Glide
 
 /**
  * Created by sakemotoshinya on 2017/02/06.
@@ -30,6 +28,10 @@ class MainAdapter(val context: Context, val items: List<String>): RecyclerView.A
         return when(viewType) {
             SMALL_VIEW_TYPE -> ViewHolder(inflater.inflate(R.layout.list_item, parent, false))
             else -> ViewHolder(inflater.inflate(R.layout.list_item_large, parent, false))
+        }.apply {
+            this.itemView.setOnClickListener {
+                Snackbar.make(this.itemView, "item: $adapterPosition", Snackbar.LENGTH_SHORT).show()
+            }
         }
     }
 
