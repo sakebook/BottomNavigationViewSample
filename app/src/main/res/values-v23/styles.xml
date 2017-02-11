@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="AppTheme" parent="BaseTheme">
-        <item name="android:statusBarColor">@color/translucent</item>
+        <item name="android:statusBarColor">@color/translucent_dark_20</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:navigationBarColor">@color/translucent</item>
+        <item name="android:navigationBarColor">@color/translucent_dark_20</item>
     </style>
 </resources>

@@ -6,6 +6,6 @@
 
     <color name="white">#FFFFFF</color>
     <color name="gray">#E0E0E0</color>
-    <color name="translucent">#33000000</color>
-    <color name="disable_translucent_light">#80FFFFFF</color>
+    <color name="translucent_dark_20">#33000000</color>
+    <color name="translucent_light_50">#80FFFFFF</color>
 </resources>
