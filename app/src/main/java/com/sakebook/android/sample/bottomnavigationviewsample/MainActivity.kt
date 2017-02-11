@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
-import android.os.Build
 import android.support.v7.widget.Toolbar
 import android.view.View
 
@@ -26,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initToolbar() {
-        toolbar.title = "BottomNavigationViewSample"
+        toolbar.title = resources.getString(R.string.app_name)
     }
 
     private fun initBottomNavigation() {

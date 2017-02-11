@@ -3,13 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout_coordinator"
-    android:fitsSystemWindows="false"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
-        android:fitsSystemWindows="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         
@@ -19,7 +17,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/tool_bar_height"
             android:theme="@style/ToolbarTheme"
-            android:minHeight="?attr/actionBarSize"
             android:background="@color/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
             android:elevation="@dimen/small_margin"/>
@@ -28,7 +25,6 @@
 
     <FrameLayout
         android:id="@+id/layout_container"
-        android:fitsSystemWindows="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -37,9 +33,9 @@
         android:id="@+id/layout_bottom"
         android:orientation="vertical"
         android:gravity="bottom"
-        android:elevation="@dimen/small_margin"
         android:layout_gravity="bottom"
-        app:layout_behavior="com.sakebook.android.sample.bottomnavigationviewsample.BottomLayoutBehavior"
+        android:elevation="@dimen/small_margin"
+        app:layout_behavior="@string/bottom_layout_behavior"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -53,8 +49,6 @@
             android:id="@+id/bottom_navigation"
             android:paddingBottom="@dimen/navigation_bar_padding"
             android:background="@color/colorPrimary"
-            android:elevation="@dimen/small_margin"
-            app:elevation="@dimen/small_margin"
             app:menu="@menu/bottom_navigation"
             app:itemIconTint="@drawable/bottom_navigation_selector"
             app:itemTextColor="@drawable/bottom_navigation_selector"

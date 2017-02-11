@@ -4,5 +4,6 @@
     <string name="navigation_recents">Recents</string>
     <string name="navigation_favorites">Favorites</string>
     <string name="navigation_nearby">Nearby</string>
+    <string name="bottom_layout_behavior" translatable="false">com.sakebook.android.sample.bottomnavigationviewsample.BottomLayoutBehavior</string>
 
 </resources>
