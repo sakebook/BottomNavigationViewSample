@@ -3,7 +3,6 @@ package com.sakebook.android.sample.bottomnavigationviewsample
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.widget.Toolbar
 import android.view.View
@@ -30,35 +29,33 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initBottomNavigation() {
-        val tabCount = 3
-        val fragments = (0 until tabCount).mapIndexed { i, value ->
-            MainFragment.newInstance(i)
-        }
-        updateBottomNavigation(fragments, 0, "0")
+        updateBottomNavigation(0, "0")
         bottomNavigation.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.navigation_recents -> {
-                    updateBottomNavigation(fragments, 0, "0")
+                    updateBottomNavigation(0, "0")
                 }
                 R.id.navigation_favorites -> {
-                    updateBottomNavigation(fragments, 1, "1")
+                    updateBottomNavigation(1, "1")
                 }
                 R.id.navigation_nearby -> {
-                    updateBottomNavigation(fragments, 2, "2")
+                    updateBottomNavigation(2, "2")
                 }
                 else -> return@setOnNavigationItemSelectedListener false
             }
         }
     }
 
-    private fun updateBottomNavigation(fragments: List<Fragment>, position: Int, tag: String): Boolean {
+    private fun updateBottomNavigation(position: Int, tag: String): Boolean {
         val fragment = supportFragmentManager.findFragmentByTag(tag)
         when(fragment) {
-            null -> supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.layout_container, fragments[position], tag)
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                    .commit()
+            null -> {
+                supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.layout_container, MainFragment.newInstance(position), tag)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        .commit()
+            }
             else -> {
                 if (fragment is BottomNavigationInterface) {
                     fragment.scrollToTop()
