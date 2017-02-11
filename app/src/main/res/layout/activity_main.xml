@@ -55,8 +55,8 @@
             android:elevation="@dimen/small_margin"
             app:elevation="@dimen/small_margin"
             app:menu="@menu/bottom_navigation"
-            app:itemIconTint="@color/colorAccent"
-            app:itemTextColor="@color/colorAccent"
+            app:itemIconTint="@drawable/bottom_navigation_selector"
+            app:itemTextColor="@drawable/bottom_navigation_selector"
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottom_navigation_height"/>
     </LinearLayout>
