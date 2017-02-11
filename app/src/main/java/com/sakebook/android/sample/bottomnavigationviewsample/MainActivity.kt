@@ -51,10 +51,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateBottomNavigation(fragments: List<Fragment>, potision: Int, tag: String) {
+    private fun updateBottomNavigation(fragments: List<Fragment>, position: Int, tag: String) {
         val fragment = supportFragmentManager.findFragmentByTag(tag)
         when(fragment) {
-            null -> supportFragmentManager.beginTransaction().replace(R.id.layout_container, fragments[potision], tag).commit()
+            null -> supportFragmentManager.beginTransaction().replace(R.id.layout_container, fragments[position], tag).commit()
             else -> {
                 (fragment as MainFragment).smoothScrollToTop()
             }

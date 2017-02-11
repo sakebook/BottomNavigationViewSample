@@ -22,7 +22,6 @@ class BottomLayoutBehavior(val context: Context, attrs: AttributeSet) : Coordina
     private var snacking = false
 
     override fun layoutDependsOn(parent: CoordinatorLayout, bottomLayout: LinearLayout, dependency: View): Boolean {
-        android.util.Log.d("Bottom", "dependency: $dependency")
         return dependency is AppBarLayout || dependency is Snackbar.SnackbarLayout
     }
 
