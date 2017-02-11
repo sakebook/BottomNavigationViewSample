@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentTransaction
 import android.support.v7.widget.Toolbar
 import android.view.View
 
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         val fragments = (0 until tabCount).mapIndexed { i, value ->
             MainFragment.newInstance(i)
         }
-        supportFragmentManager.beginTransaction().replace(R.id.layout_container, fragments[0], "0").commit()
+        updateBottomNavigation(fragments, 0, "0")
         bottomNavigation.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.navigation_recents -> {
@@ -47,17 +48,23 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> return@setOnNavigationItemSelectedListener false
             }
-            true
         }
     }
 
-    private fun updateBottomNavigation(fragments: List<Fragment>, position: Int, tag: String) {
+    private fun updateBottomNavigation(fragments: List<Fragment>, position: Int, tag: String): Boolean {
         val fragment = supportFragmentManager.findFragmentByTag(tag)
         when(fragment) {
-            null -> supportFragmentManager.beginTransaction().replace(R.id.layout_container, fragments[position], tag).commit()
+            null -> supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.layout_container, fragments[position], tag)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                    .commit()
             else -> {
-                (fragment as MainFragment).smoothScrollToTop()
+                if (fragment is BottomNavigationInterface) {
+                    fragment.scrollToTop()
+                }
             }
         }
+        return true
     }
 }

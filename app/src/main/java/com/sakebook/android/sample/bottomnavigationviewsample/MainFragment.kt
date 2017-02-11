@@ -1,6 +1,5 @@
 package com.sakebook.android.sample.bottomnavigationviewsample
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -15,8 +14,7 @@ import android.view.ViewGroup
 /**
  * Created by sakemotoshinya on 2017/02/05.
  */
-class MainFragment: Fragment() {
-
+class MainFragment: Fragment(), BottomNavigationInterface {
     companion object {
         val ARG_KEY_SEED = "arg_key_seed"
         @JvmStatic
@@ -30,14 +28,6 @@ class MainFragment: Fragment() {
     }
 
     private var recyclerView: RecyclerView? = null
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_main, null)
@@ -57,15 +47,7 @@ class MainFragment: Fragment() {
         recyclerView?.adapter = MainAdapter(context, items)
     }
 
-    fun smoothScrollToTop() {
+    override fun scrollToTop() {
         recyclerView?.smoothScrollToPosition(0)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-    }
-
-    override fun onStart() {
-        super.onStart()
     }
 }
