@@ -109,3 +109,6 @@ fabric.properties
 # *.ipr
 
 # End of https://www.gitignore.io/api/android,intellij
+
+.idea/markdown-navigator.xml
+.idea/misc.xml
