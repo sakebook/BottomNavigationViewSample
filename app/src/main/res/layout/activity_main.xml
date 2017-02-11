@@ -18,6 +18,7 @@
             android:paddingTop="@dimen/status_bar_height"
             android:layout_width="match_parent"
             android:layout_height="@dimen/tool_bar_height"
+            android:theme="@style/ToolbarTheme"
             android:minHeight="?attr/actionBarSize"
             android:background="@color/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
